@@ -25,10 +25,9 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping("/")
-	@ResponseBody
+	@RequestMapping("/home")
 	public String hello() {
 		//return with json
-		return "Hello";
+		return "home";
 	}	
 }

@@ -7,13 +7,10 @@
  */
 package com.fcmmmmmm.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fcmmmmmm.data.RespositoryInterface;
-import com.fcmmmmmm.data.imp.ResImp;
 
 /**
  * @author FCmmmmmm
@@ -24,9 +21,10 @@ public class DataGetController {
 	
 	
 	@RequestMapping(value="/list",method=RequestMethod.GET)
-	public String getList(int start,int end)
+	public String getList(@RequestParam(value="start",defaultValue="10")int start,
+			@RequestParam(value="end",defaultValue="10")int end)
 	{
 		//return rep.findDataByIndex(start, end).toString();
-		return "sssssssss";
+		return start-end+"";
 	}
 }
