@@ -13,6 +13,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -50,6 +52,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		SpringResourceTemplateResolver templateResolver=new SpringResourceTemplateResolver(); 
 		templateResolver.setPrefix("/WEB-INF/templates/");
 		templateResolver.setSuffix(".html");
+		templateResolver.setCharacterEncoding("utf-8");
 		// templateResolver.setCharacterEncoding("UTF-8");
 		// 设置模板模式,也可用字符串"HTML"代替,此处不建议使用HTML5,原因看下图源码
 		templateResolver.setTemplateMode(TemplateMode.HTML);
@@ -66,7 +69,14 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	public ViewResolver viewResolver(TemplateEngine templateEngine) {
 		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
 		viewResolver.setTemplateEngine(templateEngine);
+		viewResolver.setCharacterEncoding("utf-8");
 		return viewResolver;
+	}
+	
+	@Bean	//文件上传解析器  
+	public MultipartResolver multipartResolver() {
+		//StandardServletMultipartResolver CommonsMultipartResolver  servlet 3.0
+		return new StandardServletMultipartResolver();
 	}
 
 }

@@ -10,7 +10,6 @@ package com.fcmmmmmm.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author FCmmmmmm
@@ -18,16 +17,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class HomeController {
-	
-	@RequestMapping(value="/do",method=RequestMethod.GET)
-	public String getHome() {		
+
+	@RequestMapping(value = "/do", method = RequestMethod.GET)
+	public String getHome() {
 		return "index";
 	}
-	
-	
+
 	@RequestMapping("/home")
 	public String hello() {
-		//return with json
+		// return with json
 		return "home";
-	}	
+	}
+
+	@RequestMapping("/filehome")
+	public String fileHome() {
+		return "fileupload";
+	}
 }

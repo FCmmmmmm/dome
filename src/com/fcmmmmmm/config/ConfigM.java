@@ -7,6 +7,9 @@
  */
 package com.fcmmmmmm.config;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -19,6 +22,7 @@ public class ConfigM  extends AbstractAnnotationConfigDispatcherServletInitializ
         return new Class<?>[] {RootConfig.class};
     }
 
+    //视图、映射等配置文件
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class<?>[] {WebConfig.class};
@@ -27,5 +31,12 @@ public class ConfigM  extends AbstractAnnotationConfigDispatcherServletInitializ
     @Override
     protected String[] getServletMappings() {
         return new String[] {"/"};
+    }
+    
+    //文件上传
+    @Override
+    protected void customizeRegistration(Dynamic registration) {
+    	//指定了最大文件大小 请求总大小  存储最大容量临界值 
+    	registration.setMultipartConfig(new MultipartConfigElement("/file",2097512,4194304,0));
     }
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<form action="localhost:8080/dome/upload/file" method="post"
+		enctype="multipart/form-data">
+		<lable>请上传文件</lable>
+
+		<p><label>请输入描述：</label> <input type="text" name="des" /></p>
+		
+		<input type="file" accept="image/jpg,image/png" name="img"/>	
+		
+		<input type="submit" value="Submit">
+	</form>
+	
+</body>
+</html>

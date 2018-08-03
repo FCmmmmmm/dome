@@ -1,4 +1,11 @@
 # dome
-Spring application  without xml and maven
+Spring application  without web.xml and maven
 
-url: localhost:[yourPort]/dome/do     return index.jsp
+视图解析器为：thymeleaf
+配置了SpringSecurity
+
+
+这仅仅是一个入门例子
+
+
+
